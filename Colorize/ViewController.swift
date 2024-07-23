@@ -40,28 +40,32 @@ class ViewController: UIViewController {
         timerLabel.text = "\(seconds)"
     }
     
-    @objc func timerFired() {
+    func invalidateTimers() {
         seconds = 5
         updateLabel()
-        view.backgroundColor = .systemGray3
         timer5?.invalidate()
         timer1?.invalidate()
     }
     
+    @objc func timerFired() {
+        view.backgroundColor = .systemGray3
+        invalidateTimers()
+    }
+    
     @objc func redButtonPressed() {
-        timer5?.invalidate()
+        invalidateTimers()
         view.backgroundColor = .red
         makeTimer()
     }
     
     @objc func greenButtonPressed() {
-        timer5?.invalidate()
+        invalidateTimers()
         view.backgroundColor = .green
         makeTimer()
     }
     
     @objc func blueButtonPressed() {
-        timer5?.invalidate()
+        invalidateTimers()
         view.backgroundColor = .blue
         makeTimer()
     }
